@@ -1,12 +1,16 @@
 package com.zerocinco.planteUmaArvore.model;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
+
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 @Entity
 @Table(name = "tema")
@@ -26,6 +30,11 @@ public class PlanteUmaArvore {
 	
 	@NotNull
 	private boolean disponibilidade;
+	
+	
+	// @OneToMany(mappedBy = "PlanteUmaArvore", cascade = CascadeType.ALL)        // mapeia o atributo tema
+	// @JsonIgnoreProperties("PlanteUmaArvore")									//ignora a duplicidade		
+	// private List<Postagem> postagem;
 
 	public long getId() {
 		return id;
